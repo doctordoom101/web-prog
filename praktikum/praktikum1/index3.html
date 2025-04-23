@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Layout Halaman</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: auto;
+        }
+        .header {
+            background-color: blue;
+            color: white;
+            padding: 50px;
+        }
+        .content {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .kotak1 {
+            background-color: green;
+            width: 30%;
+            height: 200px;
+        }
+        .kotak2 {
+            background-color: yellow;
+            width: 40%;
+            height: 200px;
+        }
+        .kotak3 {
+            background-color: red;
+            width: 30%;
+            height: 200px;
+        }
+        .footer {
+            background-color: pink;
+            padding: 50px;
+        }
+        .nav {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="header">
+            <h2>header</h2>
+        </div>
+
+        <div class="content">
+            <div class="kotak1">kotak1</div>
+            <div class="kotak2">kotak2</div>
+            <div class="kotak3">kotak3</div>
+        </div>
+
+        <div class="footer">
+            <p>ini footer</p>
+        </div>
+
+        <div class="nav">
+            <a href="#">Halaman Pendaftaran</a> | 
+            <a href="#">Tempat Wisata</a> | 
+            <a href="#">Layout</a>
+        </div>
+    </div>
+
+</body>
+</html>

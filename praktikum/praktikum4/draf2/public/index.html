@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pemesanan Tiket Kereta</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gradient-to-br from-blue-50 to-indigo-50 min-h-screen p-4 md:p-8">
+  <div class="max-w-5xl mx-auto">
+    <div class="mb-8 text-center">
+      <h1 class="text-4xl font-bold text-gray-800 mb-2">Pemesanan Tiket Kereta</h1>
+      <p class="text-gray-600">Pesan tiket kereta Anda dengan mudah dan cepat</p>
+    </div>
+    <!-- Background Image -->
+    <div class="fixed inset-0 bg-cover bg-center bg-no-repeat opacity-20 pointer-events-none z-0" style="background-image: url('train.jpg');"></div>
+    <div class="relative">
+      <div id="successAlert" class="hidden mb-6 bg-green-50 border border-green-200 text-green-600 px-4 py-3 rounded-lg relative z-10">
+        <span class="flex items-center">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+          </svg>
+          <span id="successMessage"></span>
+        </span>
+      </div>
+      
+      <div class="tabs mb-6 relative z-10">
+        <div class="tab-list grid grid-cols-2 bg-white rounded-lg p-1 shadow-sm">
+          <button id="formTab" class="tab-trigger py-2 px-4 rounded-md text-center font-medium text-blue-600 bg-blue-50">Formulir Pemesanan</button>
+          <button id="dataTab" class="tab-trigger py-2 px-4 rounded-md text-center font-medium text-gray-500" disabled>Data Pemesanan</button>
+        </div>
+      </div>
+      
+      <div id="formContent" class="tab-content relative z-10">
+        <div class="bg-white rounded-lg shadow-md overflow-hidden">
+          <div class="p-6 border-b border-gray-100 relative overflow-hidden">
+            <div class="absolute inset-0 bg-cover bg-center opacity-10" style="background-image: url('train-background.png'); background-repeat: no-repeat;"></div>
+            <div class="relative z-10">
+              <h2 class="text-xl font-semibold text-gray-800" id="formTitle">Pemesanan Tiket Baru</h2>
+              <p class="text-gray-500 mt-1">Silakan isi data diri dan informasi perjalanan Anda dengan lengkap dan benar</p>
+            </div>
+          </div>
+          
+          <form id="ticketForm" class="p-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div class="space-y-4">
+                <div>
+                  <label for="nama" class="block text-sm font-medium text-gray-700">Nama Penumpang</label>
+                  <input type="text" id="nama" name="nama" placeholder="Masukkan nama lengkap" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                  <p id="namaError" class="text-red-500 text-sm mt-1 hidden"></p>
+                </div>
+                
+                <div>
+                  <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                  <input type="email" id="email" name="email" placeholder="contoh@email.com" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                  <p id="emailError" class="text-red-500 text-sm mt-1 hidden"></p>
+                </div>
+                
+                <div>
+                  <label for="nomorHP" class="block text-sm font-medium text-gray-700">Nomor HP</label>
+                  <input type="text" id="nomorHP" name="nomorHP" placeholder="08xxxxxxxxxx" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                  <p id="nomorHPError" class="text-red-500 text-sm mt-1 hidden"></p>
+                </div>
+                
+                <div>
+                  <span class="block text-sm font-medium text-gray-700">Jenis Kelamin</span>
+                  <div class="mt-2 flex space-x-6">
+                    <div class="flex items-center">
+                      <input id="laki-laki" name="jenisKelamin" type="radio" value="Laki-laki" class="focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300">
+                      <label for="laki-laki" class="ml-2 block text-sm text-gray-700">Laki-laki</label>
+                    </div>
+                    <div class="flex items-center">
+                      <input id="perempuan" name="jenisKelamin" type="radio" value="Perempuan" class="focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300">
+                      <label for="perempuan" class="ml-2 block text-sm text-gray-700">Perempuan</label>
+                    </div>
+                  </div>
+                  <p id="jenisKelaminError" class="text-red-500 text-sm mt-1 hidden"></p>
+                </div>
+              </div>
+              
+              <div class="space-y-4">
+                <div>
+                  <label for="kereta" class="block text-sm font-medium text-gray-700">Kereta</label>
+                  <div class="relative mt-1">
+                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
+                      </svg>
+                    </div>
+                    <select id="kereta" name="kereta" class="pl-10 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                      <option value="">Pilih kereta</option>
+                      <option value="Argo Bromo Anggrek">Argo Bromo Anggrek</option>
+                      <option value="Gajayana">Gajayana</option>
+                      <option value="Bima">Bima</option>
+                      <option value="Taksaka">Taksaka</option>
+                      <option value="Argo Dwipangga">Argo Dwipangga</option>
+                      <option value="Argo Lawu">Argo Lawu</option>
+                      <option value="Argo Parahyangan">Argo Parahyangan</option>
+                      <option value="Sembrani">Sembrani</option>
+                    </select>
+                  </div>
+                  <p id="keretaError" class="text-red-500 text-sm mt-1 hidden"></p>
+                </div>
+                
+                <div class="grid grid-cols-2 gap-4">
+                  <div>
+                    <label for="stasiunAsal" class="block text-sm font-medium text-gray-700">Stasiun Asal</label>
+                    <div class="relative mt-1">
+                      <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
+                          <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
+                        </svg>
+                      </div>
+                      <select id="stasiunAsal" name="stasiunAsal" class="pl-10 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                        <option value="">Pilih stasiun</option>
+                        <option value="Jakarta (GMR)">Jakarta (GMR)</option>
+                        <option value="Bandung (BD)">Bandung (BD)</option>
+                        <option value="Yogyakarta (YK)">Yogyakarta (YK)</option>
+                        <option value="Surabaya (SB)">Surabaya (SB)</option>
+                        <option value="Malang (ML)">Malang (ML)</option>
+                        <option value="Semarang (SMR)">Semarang (SMR)</option>
+                        <option value="Solo (SLO)">Solo (SLO)</option>
+                        <option value="Purwokerto (PWT)">Purwokerto (PWT)</option>
+                      </select>
+                    </div>
+                    <p id="stasiunAsalError" class="text-red-500 text-sm mt-1 hidden"></p>
+                  </div>
+                  
+                  <div>
+                    <label for="stasiunTujuan" class="block text-sm font-medium text-gray-700">Stasiun Tujuan</label>
+                    <div class="relative mt-1">
+                      <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
+                          <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
+                        </svg>
+                      </div>
+                      <select id="stasiunTujuan" name="stasiunTujuan" class="pl-10 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                        <option value="">Pilih stasiun</option>
+                        <option value="Jakarta (GMR)">Jakarta (GMR)</option>
+                        <option value="Bandung (BD)">Bandung (BD)</option>
+                        <option value="Yogyakarta (YK)">Yogyakarta (YK)</option>
+                        <option value="Surabaya (SB)">Surabaya (SB)</option>
+                        <option value="Malang (ML)">Malang (ML)</option>
+                        <option value="Semarang (SMR)">Semarang (SMR)</option>
+                        <option value="Solo (SLO)">Solo (SLO)</option>
+                        <option value="Purwokerto (PWT)">Purwokerto (PWT)</option>
+                      </select>
+                    </div>
+                    <p id="stasiunTujuanError" class="text-red-500 text-sm mt-1 hidden"></p>
+                  </div>
+                </div>
+                
+                <div>
+                  <label for="tanggalBerangkat" class="block text-sm font-medium text-gray-700">Tanggal Keberangkatan</label>
+                  <div class="relative mt-1">
+                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd" />
+                      </svg>
+                    </div>
+                    <input type="date" id="tanggalBerangkat" name="tanggalBerangkat" class="pl-10 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                  </div>
+                  <p id="tanggalBerangkatError" class="text-red-500 text-sm mt-1 hidden"></p>
+                </div>
+                
+                <div>
+                  <label for="kelas" class="block text-sm font-medium text-gray-700">Kelas</label>
+                  <select id="kelas" name="kelas" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                    <option value="">Pilih kelas</option>
+                    <option value="Ekonomi">Ekonomi</option>
+                    <option value="Bisnis">Bisnis</option>
+                    <option value="Eksekutif">Eksekutif</option>
+                  </select>
+                  <p id="kelasError" class="text-red-500 text-sm mt-1 hidden"></p>
+                </div>
+              </div>
+            </div>
+            
+            <div class="mt-8">
+              <button type="submit" id="submitButton" class="w-full inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                Pesan Tiket
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+      
+      <div id="dataContent" class="tab-content hidden relative z-10">
+        <div class="bg-white rounded-lg shadow-md overflow-hidden">
+          <div class="p-6 border-b border-gray-100 relative overflow-hidden">
+            <div class="absolute inset-0 bg-cover bg-center opacity-10" style="background-image: url('train-background.png'); background-repeat: no-repeat;"></div>
+            <div class="relative z-10 flex justify-between items-center">
+              <div>
+                <h2 class="text-xl font-semibold text-gray-800">Data Pemesanan Tiket</h2>
+                <p class="text-gray-500 mt-1">Daftar tiket yang telah dipesan</p>
+              </div>
+              <button type="button" id="downloadButton" class="inline-flex items-center justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd" />
+                </svg>
+                Download Data
+              </button>
+            </div>
+          </div>
+          
+          <div class="p-6">
+            <div class="overflow-x-auto">
+              <table class="min-w-full divide-y divide-gray-200">
+                <thead class="bg-gray-50">
+                  <tr>
+                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nama</th>
+                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Kereta</th>
+                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Rute</th>
+                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tanggal</th>
+                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Kelas</th>
+                    <th scope="col" class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Aksi</th>
+                  </tr>
+                </thead>
+                <tbody id="penumpangTableBody" class="bg-white divide-y divide-gray-200">
+                  <!-- Data penumpang akan ditampilkan di sini -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <script src="script.js"></script>
+</body>
+</html>

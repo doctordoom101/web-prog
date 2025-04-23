@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pendaftaran Kursus Online</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div>
+        <a href="http://127.0.0.1:3000/praktikum3/index.html" style="
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            background-color: #2a4d69;
+            color: #e7eff6;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(42, 77, 105, 0.3);
+            border: 1px solid #4b86b4;
+            transition: all 0.2s ease;
+            z-index: 1000;
+            display: inline-block;
+            text-decoration: none;
+        " onmouseover="this.style.backgroundColor='#4b86b4'; this.style.boxShadow='0 4px 8px rgba(42, 77, 105, 0.5)';" 
+        onmouseout="this.style.backgroundColor='#2a4d69'; this.style.boxShadow='0 2px 4px rgba(42, 77, 105, 0.3)';">
+            Home
+        </a>
+    </div>
+    <div class="container">
+        <div class="header">
+            <h1>Pendaftaran Kursus Online</h1>
+            <p>Silakan isi formulir di bawah ini untuk mendaftar kursus</p>
+        </div>
+        
+        <div class="form-container">
+            <form id="registrationForm">
+                <div class="form-group">
+                    <label for="name">Nama Lengkap</label>
+                    <input type="text" id="name" class="form-control" placeholder="Masukkan nama lengkap Anda" required>
+                    <div id="nameError" class="error">Nama tidak boleh kosong</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" class="form-control" placeholder="Masukkan email Anda" required>
+                    <div id="emailError" class="error">Format email tidak valid</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Nomor HP</label>
+                    <input type="tel" id="phone" class="form-control" placeholder="Masukkan nomor HP Anda" required>
+                    <div id="phoneError" class="error">Nomor HP hanya boleh berisi angka</div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Jenis Kelamin</label>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="gender" value="Laki-laki" required> Laki-laki
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="gender" value="Perempuan"> Perempuan
+                        </label>
+                    </div>
+                    <div id="genderError" class="error">Pilih jenis kelamin</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="course">Pilihan Kursus</label>
+                    <select id="course" class="form-control" required>
+                        <option value="">-- Pilih Kursus --</option>
+                        <option value="Web Development">Web Development</option>
+                        <option value="Mobile App Development">Mobile App Development</option>
+                        <option value="Data Science">Data Science</option>
+                        <option value="UI/UX Design">UI/UX Design</option>
+                        <option value="Digital Marketing">Digital Marketing</option>
+                    </select>
+                    <div id="courseError" class="error">Pilih kursus yang ingin diikuti</div>
+                </div>
+                
+                <button type="submit" class="submit-btn">Daftar Sekarang</button>
+            </form>
+        </div>
+        
+        <div id="resultsContainer" class="results-container">
+            <h2>Data Pendaftaran</h2>
+            <div class="result-item">
+                <div class="result-label">Nama Lengkap:</div>
+                <div id="resultName" class="result-value"></div>
+            </div>
+            <div class="result-item">
+                <div class="result-label">Email:</div>
+                <div id="resultEmail" class="result-value"></div>
+            </div>
+            <div class="result-item">
+                <div class="result-label">Nomor HP:</div>
+                <div id="resultPhone" class="result-value"></div>
+            </div>
+            <div class="result-item">
+                <div class="result-label">Jenis Kelamin:</div>
+                <div id="resultGender" class="result-value"></div>
+            </div>
+            <div class="result-item">
+                <div class="result-label">Kursus yang Dipilih:</div>
+                <div id="resultCourse" class="result-value"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

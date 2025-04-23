@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Halaman Pendaftaran</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('static/image.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            text-align: center;
+            color: black;
+        }
+        form {
+            background: rgba(255, 255, 255, 0.9);
+            width: 50%;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+        }
+        table {
+            width: 100%;
+        }
+        td {
+            padding: 8px;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background: #008CBA;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #005f75;
+        }
+        .nav {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .nav a {
+            text-decoration: none;
+            color: white;
+            background: #333;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 5px;
+            display: inline-block;
+        }
+        .nav a:hover {
+            background: #555;
+        }
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <h1 align="center">Halaman Pendaftaran</h1>
+
+    <form>
+        <table>
+            <tr>
+                <td><label for="nama">Nama</label></td>
+                <td><input type="text" id="nama" name="nama"></td>
+            </tr>
+            <tr>
+                <td><label for="ttl">Tempat Tanggal Lahir</label></td>
+                <td><input type="text" id="ttl" name="ttl"></td>
+            </tr>
+            <tr>
+                <td><label for="status">Status</label></td>
+                <td>
+                    <select name="status" id="status">
+                        <option value="menikah">Menikah</option>
+                        <option value="belum menikah">Belum Menikah</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="alamat">Alamat</label></td>
+                <td><textarea id="alamat" name="alamat" rows="3" cols="20"></textarea></td>
+            </tr>
+            <tr>
+                <td><label>Jenis Kelamin</label></td>
+                <td>
+                    <input type="radio" id="male" name="gender" value="male">
+                    <label for="male">Male</label>
+                    <br>
+                    <input type="radio" id="female" name="gender" value="female">
+                    <label for="female">Female</label>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="password">Password</label></td>
+                <td><input type="password" id="password" name="password"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><button type="submit">Simpan Data</button></td>
+            </tr>
+        </table>
+    </form>
+
+    <br>
+
+    <div align="center">
+        <a href="#">Halaman Pendaftaran</a> | 
+        <a href="#">Tempat Wisata</a> | 
+        <a href="#">Layout</a>
+    </div>
+
+    <footer align="center">
+        <p>Web Defanda</p>
+    </footer>
+
+</body>
+</html>
