@@ -1,0 +1,32 @@
+# Proteksi file upload dari eksekusi berbahaya
+<FilesMatch "\.(php|php3|php4|php5|phtml|pl|py|jsp|asp|sh|cgi)$">
+    Require all denied
+</FilesMatch>
+
+# Izinkan akses ke file utama PHP
+<FilesMatch "^(index|tambah|edit|hapus|config)\.php$">
+    Require all granted
+</FilesMatch>
+
+# Proteksi file konfigurasi
+<Files "config.php">
+    Require all denied
+</Files>
+
+# Proteksi file sistem tersembunyi
+<FilesMatch "^(\.htaccess|\.htpasswd|\.git|\.svn|\.env)$">
+    Require all denied
+</FilesMatch>
+
+# Keamanan tambahan
+Options -Indexes
+ServerSignature Off
+
+# Proteksi dari serangan via URL query string
+RewriteEngine On
+RewriteCond %{QUERY_STRING} (<|%3C).*script.*(>|%3E) [NC,OR]
+RewriteCond %{QUERY_STRING} GLOBALS(=|\[|\%[0-9A-Z]{0,2}) [OR]
+RewriteCond %{QUERY_STRING} _REQUEST(=|\[|\%[0-9A-Z]{0,2}) [OR]
+RewriteCond %{QUERY_STRING} ^.*(\[|\]|\(|\)|<|>|'|"|;|\?|\*|=).* [NC,OR]
+RewriteCond %{QUERY_STRING} ^.*(\\x00|\\x04|\\x08|\\x0d|\\x1b|\\x20|\\x3c|\\x3e|\\x7f).* [NC]
+RewriteRule ^(.*)$ - [F,L]

@@ -1,0 +1,13 @@
+# Nonaktifkan eksekusi script PHP
+php_flag engine off
+AddType text/plain .php .php3 .phtml .pht
+
+# Hanya izinkan akses ke file gambar
+<FilesMatch "\.(jpg|jpeg|png|gif)$">
+    Require all granted
+</FilesMatch>
+
+# Tolak akses ke semua file lainnya
+<FilesMatch ".*">
+    Require all denied
+</FilesMatch>
